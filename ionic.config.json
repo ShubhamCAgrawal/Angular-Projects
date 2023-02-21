@@ -1,0 +1,10 @@
+{
+  "name": "movieApp",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular"
+}

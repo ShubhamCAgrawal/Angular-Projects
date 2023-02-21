@@ -1,0 +1,10 @@
+.filters {
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+
+  li {
+    width: 12%;
+    text-align: center;
+  }
+}

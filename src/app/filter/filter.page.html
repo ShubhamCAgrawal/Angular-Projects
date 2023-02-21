@@ -1,0 +1,49 @@
+<!-- <ion-menu contentId="filter" menuId="filter" side="end">
+  <ion-header>
+    <ion-toolbar color="danger">
+      <ion-title>Filter Movies</ion-title>
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-list-header>
+        <ion-label class="d-flex ion-justify-content-between">
+          <h3>Ratings</h3>
+        </ion-label>
+        <ion-buttons>
+          <ion-button data-toggle="collapse" data-target="#filterMenu">
+            <ion-icon name="add-outline" slot="end"></ion-icon>
+            <ion-icon name="remove-outline" slot="end"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <hr>
+      </ion-list-header>
+      <ion-item>
+        <ion-checkbox color="secondary" name="NAME" slot="start" #checkbox> </ion-checkbox>
+        <ion-text>List Of Ratings</ion-text>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu> -->
+
+<ion-header>
+  <ion-title>Choose Ratings</ion-title>
+  <ion-buttons>
+    <ion-button>
+      <ion-icon name="close" slot="end"> </ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-header>
+
+<ion-list *ngFor="let filterData of number">
+  <ion-item (click)="dismiss(filterData)">{{filterData}}</ion-item>
+</ion-list>
+<ion-content>
+
+</ion-content>

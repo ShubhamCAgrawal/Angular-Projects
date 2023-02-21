@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Registration</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="credential" (ngSubmit)="register()">
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Enter Your Name..." formControlName="name"></ion-input>
+      <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors">Name Should not empty</ion-note>
+    </ion-item>
+
+    <ion-item fill=" solid" class="ion-margin-bottom">
+      <ion-input type="number" placeholder="Enter Your Phone no." formControlName="phone"></ion-input>
+      <ion-note slot="error" *ngIf="(phone.dirty || phone.touched) && phone.errors">Enter Valid Phone Number</ion-note>
+    </ion-item>
+
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Enter Your Address.." formControlName="address"></ion-input>
+      <ion-note slot="error" *ngIf="(phone.dirty || phone.touched) && phone.errors">Address Should not empty</ion-note>
+    </ion-item>
+
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-input type="email" [(ngModel)]="emailVal" placeholder="Email" formControlName="email"></ion-input>
+      <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors">Email is invalid</ion-note>
+    </ion-item>
+
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-input type="password" [(ngModel)]="passwordlVal" placeholder="Set Password" formControlName="password">
+      </ion-input>
+      <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Email is invalid
+      </ion-note>
+    </ion-item>
+
+    <ion-button type="button" (click)="register()">Create Account</ion-button>
+    <ion-button type="button" routerLink="../login">Back To login</ion-button>
+  </form>
+</ion-content>

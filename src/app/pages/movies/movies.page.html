@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-button>
+    <ion-title>Trending Movies</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+      <ion-button (click)="reset()">
+        <ion-icon name="refresh"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-button (click)="presentPopover($event)">Apply Filter</ion-button> -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="presentPopover($event)" color="danger">
+      <ion-icon name="funnel" color="dark"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <p>{{ roleMsg }}</p>
+  <ion-searchbar [(ngModel)]="term" showCancelButton="focus" placeholder="Search for movies">
+  </ion-searchbar>
+  <!-- <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-button id="click-trigger">Fllter For rating</ion-button>
+    <ion-popover trigger="click-trigger" triggerAction="click">
+      <ng-template>
+        <ion-select interface="alert" placeholder="select" cancelText="Cancel Choice">
+          <ion-select-option (ionSelect)="onFilter($event)" value='10'>10</ion-select-option>
+          <ion-select-option value='5' (ionSelect)="onFilter($event)">5</ion-select-option>
+          <ion-select-option value='6' (ionSelect)="onFilter($event)">6</ion-select-option>
+          <ion-select-option value='7' (ionSelect)="onFilter($event)">7</ion-select-option>
+        </ion-select>
+      </ng-template>
+    </ion-popover>
+  </ion-fab> -->
+  <ion-list>
+    <ion-item button *ngFor="let item of movies | filter:term" [routerLink]='[item.id]'>
+      <ion-avatar slot="start">
+        <img [src]="imageBaseUrl + item.poster_path">
+      </ion-avatar>
+      <ion-label>{{item.title}}
+        <p>{{item.release_date | date:'y'}}</p>
+      </ion-label>
+      <ion-badge slot="end">{{item.vote_average}}</ion-badge>
+    </ion-item>
+
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading More Data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+
+</ion-content>
